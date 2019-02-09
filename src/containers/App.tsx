@@ -1,16 +1,15 @@
 import * as React from "react";
+import { Route } from 'react-router-dom';
 import "./App.scss";
-import Join from '../components/Join';
+import { Menu, Home, Join } from '../components';
 
 class App extends React.Component {
-	handleSubmit(values: any): void {
-		console.log('submit', values);
-	}
-
 	render() {
 		return (
-			<>
-				<Join onSubmit={this.handleSubmit} />
+			<>	
+				<Menu />
+				<Route exact path="/" component={Home} />
+				<Route path="/join" component={Join} />
 			</>
 		)
 	}
