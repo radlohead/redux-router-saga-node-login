@@ -1,11 +1,16 @@
 import * as React from "react";
 import "./App.scss";
+import Join from '../components/Join';
 
 class App extends React.Component {
+	handleSubmit(values: any): void {
+		console.log('submit', values);
+	}
+
 	render() {
 		return (
 			<>
-				<div className="app">App</div>
+				<Join onSubmit={this.handleSubmit} />
 			</>
 		)
 	}

@@ -1,7 +1,14 @@
-import * as React from 'react';
+import { reducer as reduxFormReducer } from 'redux-form';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
 
-const reducer = () => {
+const reducer = combineReducers({
+    form: reduxFormReducer
+});
 
-}
+const store = createStore(
+    reducer,
+    applyMiddleware(logger)
+);
 
-export default reducer;
+export default store;
