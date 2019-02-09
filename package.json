@@ -7,6 +7,7 @@
     "@types/node": "10.12.23",
     "@types/react": "16.8.2",
     "@types/react-dom": "16.8.0",
+    "node-sass": "^4.11.0",
     "query-string": "^6.2.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
@@ -33,6 +34,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@types/node-sass": "^3.10.32",
     "@types/query-string": "^6.2.0",
     "@types/react-redux": "^7.0.1",
     "@types/react-router-dom": "^4.3.1",
