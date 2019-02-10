@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { Login } from './index';
 
 const Home = () => {
     return (
         <>
-            Home
+            <Login />
         </>
     )
 }

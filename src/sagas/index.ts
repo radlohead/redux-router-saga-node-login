@@ -8,7 +8,11 @@ export const fetchPostsApi = async () => {
 
 function* helloSaga() {
 	const response = yield call(fetchPostsApi);
-	yield put(actions.setReceivePosts(response));
+	try {
+		yield put(actions.setReceivePosts(response));
+	}catch(e) {
+		yield put({ type: actions.HELLO_SAGA_FETCH_FAILED, message: e.message });
+	}
 }
 
 function* mySaga() {

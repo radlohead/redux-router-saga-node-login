@@ -1,20 +1,11 @@
 import * as React from "react";
 import { Field, reduxForm } from 'redux-form';
 
-const JoinForm = (props: any) => {
+const LoginForm = (props: any) => {
     const { handleSubmit } = props;
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <label>이름</label>
-                <div>
-                    <Field
-                        name="name"
-                        component="input"
-                        type="text"
-                        placeholder="이름을 입력해 주세요"
-                    />
-                </div>
                 <div>
                     <label>아이디</label>
                     <div>
@@ -39,12 +30,12 @@ const JoinForm = (props: any) => {
                 </div>
             </div>
             <div>
-                <button type="submit">입력 완료</button>
+                <button type="submit">로그인</button>
             </div>
         </form>
     )
 }
 
 export default reduxForm({
-    form: 'joinForm'
-})(JoinForm);
+    form: 'loginForm'
+})(LoginForm);
