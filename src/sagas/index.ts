@@ -1,9 +1,10 @@
 import { put, takeLatest, call, all, fork } from 'redux-saga/effects';
+import axios from 'axios';
 import * as actions from '../actions';
 
-export const fetchPostsApi = async () => {
-	const response = await fetch(`https://jsonplaceholder.typicode.com/users`)
-	return response.json();
+export const fetchPostsApi: any = async () => {
+	const response = await axios.get(`http://localhost:4000/api/join`)
+	return response.data;
 }
 
 function* helloSaga() {

@@ -87,6 +87,7 @@
   ],
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "@types/cors": "^2.8.4",
     "@types/node-sass": "^3.10.32",
     "@types/query-string": "^6.2.0",
     "@types/react-redux": "^7.0.1",
@@ -94,7 +95,8 @@
     "@types/redux": "^3.6.0",
     "@types/redux-form": "^7.5.0",
     "@types/redux-logger": "^3.0.6",
-    "@types/redux-saga": "^0.10.5"
+    "@types/redux-saga": "^0.10.5",
+    "cors": "^2.8.5"
   },
   "jest": {
     "collectCoverageFrom": [
