@@ -21,7 +21,7 @@ app.get(['/', '/index.html'], (req, res, next) => {
 });
 
 app.get('/api/join', cors(), (req, res, next) => {
-    connection.query('SELECT * FROM board', (err, rows) => {
+    connection.query('SELECT * FROM join_users', (err, rows) => {
         if(err) console.log('Error:', err);
         res.send(rows);
     })
@@ -29,8 +29,8 @@ app.get('/api/join', cors(), (req, res, next) => {
 
 app.post('/api/join', cors(), (req, res, next) => {
     console.log(req.body);
-    const sql = 'INSERT INTO board (id, name, age) VALUES (?, ?, ?)';
-    connection.query(sql, [req.body.id, req.body.name, req.body.password], (err, rows) => {
+    const sql = 'INSERT INTO join_users (name, id, password) VALUES (?, ?, ?)';
+    connection.query(sql, [req.body.name, req.body.id, req.body.password], (err, rows) => {
         if(err) console.log('Error', err);
         res.send({ status: 'SUCCESS' });
     });
