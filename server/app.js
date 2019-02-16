@@ -1,6 +1,5 @@
 const mysql = require('mysql2');
 const express = require('express');
-const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser');
 const userInfo = require('./userInfo');
@@ -20,14 +19,14 @@ app.get(['/', '/index.html'], (req, res, next) => {
     res.send('index');
 });
 
-app.get('/api/join', cors(), (req, res, next) => {
+app.get('/api/join', (req, res, next) => {
     connection.query('SELECT * FROM join_users', (err, rows) => {
         if(err) console.log('Error:', err);
         res.send(rows);
     })
 });
 
-app.post('/api/join', cors(), (req, res, next) => {
+app.post('/api/join', (req, res, next) => {
     console.log(req.body);
     const sql = 'INSERT INTO join_users (name, id, password) VALUES (?, ?, ?)';
     connection.query(sql, [req.body.name, req.body.id, req.body.password], (err, rows) => {
