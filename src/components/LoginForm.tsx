@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 const LoginForm = (props: any) => {
     const { handleSubmit } = props;
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} method="post" action="http://localhost:4000/api/join">
             <div>
                 <div>
                     <label>아이디</label>

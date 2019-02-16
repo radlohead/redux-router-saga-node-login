@@ -11,6 +11,6 @@ export const setReceivePosts = (posts: any) => {
 
 export const getReceivePosts = () => {
     return {
-        type: HELLO_SAGA_FETCH_COMPLETE
+        type: HELLO_SAGA_FETCH_COMPLETE,
     }
 }

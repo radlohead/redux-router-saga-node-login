@@ -2,8 +2,9 @@ import { put, takeLatest, call, all, fork } from 'redux-saga/effects';
 import axios from 'axios';
 import * as actions from '../actions';
 
-export const fetchPostsApi: any = async () => {
-	const response = await axios.get(`http://localhost:4000/api/join`)
+export const fetchPostsApi: any = async (posts: any) => {
+	// console.log('saga', posts);
+	const response = await axios.post(`http://localhost:4000/api/join`, posts);
 	return response.data;
 }
 
