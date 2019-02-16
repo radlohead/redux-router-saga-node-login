@@ -3,8 +3,7 @@ import axios from 'axios';
 import * as actions from '../actions';
 
 export const fetchPostsApi: any = async (posts: any) => {
-	// console.log('saga', posts);
-	const response = await axios.post(`http://localhost:4000/api/join`, posts);
+	const response = await axios.post(`${actions.BASE_SERVER_URL}/api/join`, posts);
 	return response.data;
 }
 
