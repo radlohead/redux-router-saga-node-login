@@ -1,15 +1,15 @@
 import { reducer as reduxFormReducer } from 'redux-form';
 import { combineReducers } from 'redux';
-import { HELLO_SAGA_FETCH_REQUEST, HELLO_SAGA_FETCH_COMPLETE } from '../actions';
+import { POST_JOIN_FETCH_REQUEST, JOIN_FETCH_COMPLETE } from '../actions';
 
 const state = (state = {}, action: any) => {
     switch(action.type) {
-        case HELLO_SAGA_FETCH_REQUEST:
+        case POST_JOIN_FETCH_REQUEST:
             return {
                 ...state,
                 posts: action.posts
             }
-        case HELLO_SAGA_FETCH_COMPLETE:
+        case JOIN_FETCH_COMPLETE:
             return {
                 ...state
             }

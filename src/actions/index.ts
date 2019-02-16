@@ -1,17 +1,18 @@
 export const BASE_SERVER_URL = 'http://localhost:4000';
-export const HELLO_SAGA_FETCH_REQUEST = 'HELLO_SAGA_FETCH_REQUEST';
-export const HELLO_SAGA_FETCH_COMPLETE = 'HELLO_SAGA_FETCH_COMPLETE';
-export const HELLO_SAGA_FETCH_FAILED = 'HELLO_SAGA_FETCH_FAILED';
 
-export const setReceivePosts = (posts: any) => {
+export const POST_JOIN_FETCH_REQUEST = 'POST_JOIN_FETCH_REQUEST';
+export const JOIN_FETCH_COMPLETE = 'JOIN_FETCH_COMPLETE';
+export const JOIN_FETCH_FAILED = 'JOIN_FETCH_FAILED';
+
+export const setJoinReceivePosts = (posts: any) => {
     return {
-        type: HELLO_SAGA_FETCH_REQUEST,
+        type: POST_JOIN_FETCH_REQUEST,
         posts
     }
 }
 
 export const getReceivePosts = () => {
     return {
-        type: HELLO_SAGA_FETCH_COMPLETE,
+        type: JOIN_FETCH_COMPLETE,
     }
 }
