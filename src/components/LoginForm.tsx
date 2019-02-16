@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Field, reduxForm } from 'redux-form';
+import { ILoginFormType } from './Types';
 
-const LoginForm = (props: any) => {
+const LoginForm = (props: ILoginFormType) => {
     const { handleSubmit } = props;
     return (
         <form onSubmit={handleSubmit}>

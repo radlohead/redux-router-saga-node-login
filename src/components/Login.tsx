@@ -1,8 +1,9 @@
 import * as React from 'react';
-import LoginForm from './LoginForm';
+import { LoginForm } from './index';
+import { ILoginSubmitType } from './Types';
 
 class Login extends React.Component {
-    handleSubmit(values: any): void {
+    handleSubmit(values: ILoginSubmitType): void {
         console.log('submit', values);
     }
 

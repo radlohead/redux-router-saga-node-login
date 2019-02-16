@@ -1,8 +1,9 @@
 import { reducer as reduxFormReducer } from 'redux-form';
 import { combineReducers } from 'redux';
 import { POST_JOIN_FETCH_REQUEST, JOIN_FETCH_COMPLETE } from '../actions';
+import { IReducerAction } from './Types';
 
-const state = (state = {}, action: any) => {
+const state = (state = {}, action: IReducerAction) => {
     switch(action.type) {
         case POST_JOIN_FETCH_REQUEST:
             return {

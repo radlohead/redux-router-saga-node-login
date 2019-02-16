@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Field, reduxForm } from 'redux-form';
+import { IJoinFormType } from './Types';
 
-const JoinForm = (props: any) => {
+const JoinForm = (props: IJoinFormType) => {
     const { handleSubmit } = props;
     return (
         <form onSubmit={handleSubmit}>

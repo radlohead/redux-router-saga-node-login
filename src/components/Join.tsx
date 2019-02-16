@@ -1,9 +1,10 @@
 import * as React from 'react';
-import JoinForm from './JoinForm';
+import { JoinForm } from './index';
+import { IJoinSubmitType } from './Types';
 import { getJoinFetchApi } from '../sagas';
 
 class Join extends React.Component {
-    handleSubmit(values: any): void {
+    handleSubmit(values: IJoinSubmitType): void {
         getJoinFetchApi(values);
     }
 
