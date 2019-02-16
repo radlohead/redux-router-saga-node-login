@@ -1,3 +1,5 @@
 export interface IGetJoinFetchApi {
-    posts?: object;
+    name?: string;
+    id?: string;
+    password?: string;
 }
