@@ -25,7 +25,7 @@ it('App test', () => {
         return pathMap;
     }, {});
     
-    expect(component.find(Menu).length).toEqual(1);
+    expect(component.find(Menu).length).toBe(1);
     expect(pathMap['/']).toBe(Home);
     expect(pathMap['/join']).toBe(Join);
 });
