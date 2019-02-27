@@ -2,6 +2,7 @@ const mysql = require('mysql2');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
 const userInfo = require('./userInfo');
 const connection = mysql.createConnection(userInfo);
 
@@ -20,16 +21,18 @@ app.get(['/', '/index.html'], (req, res, next) => {
 });
 
 app.get('/api/join', (req, res, next) => {
-    connection.query('SELECT * FROM join_users', (err, rows) => {
+    connection.query('SELECT * FROM join_users WHERE NAME="min"', (err, rows) => {
         if(err) console.log('Error:', err);
+        console.log(jwt.verify(rows[0].password, 'minho'));
         res.send(rows);
     })
 });
 
 app.post('/api/join', (req, res, next) => {
     console.log(req.body);
+    const jwtEncoded = jwt.sign({ password: req.body.password }, 'minho')
     const sql = 'INSERT INTO join_users (name, id, password) VALUES (?, ?, ?)';
-    connection.query(sql, [req.body.name, req.body.id, req.body.password], (err, rows) => {
+    connection.query(sql, [req.body.name, req.body.id, jwtEncoded], (err, rows) => {
         if(err) console.log('Error', err);
         res.send({ status: 'SUCCESS' });
     });
