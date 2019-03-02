@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { LoginForm } from './index';
 import { ILoginSubmitType } from './Types';
+import { getLoginFetchApi } from '../sagas';
 
 class Login extends React.Component {
     handleSubmit(values: ILoginSubmitType): void {
-        console.log('submit', values);
+        getLoginFetchApi(values);
     }
 
     render(): JSX.Element {

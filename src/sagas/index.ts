@@ -1,10 +1,15 @@
-import { put, takeLatest, call, all, fork } from 'redux-saga/effects';
+import { put, takeLatest, takeEvery, call, all, fork } from 'redux-saga/effects';
 import axios from 'axios';
 import * as actions from '../actions';
 import { IGetJoinFetchApi } from './Types';
 
 export const getJoinFetchApi = async (posts: IGetJoinFetchApi) => {
 	const response = await axios.post(`${actions.BASE_SERVER_URL}/api/join`, posts);
+	return response.data;
+}
+
+export const getLoginFetchApi = async (posts: any) => {
+	const response = await axios.post(`${actions.BASE_SERVER_URL}/api/login`, posts);
 	return response.data;
 }
 
@@ -17,8 +22,19 @@ function* JoinSaga() {
 	}
 }
 
+function* LoginSaga() {
+	const response = yield call(getLoginFetchApi as any);
+	try {
+		yield put(actions.setLoginReceivePosts(response));
+	}catch(e) {
+		yield put({ type: actions.LOGIN_FETCH_COMPLETE, message: e.message });
+	}
+}
+
 function* sagaList() {
-	yield takeLatest(actions.JOIN_FETCH_COMPLETE, JoinSaga);
+	// yield takeLatest(actions.JOIN_FETCH_COMPLETE, JoinSaga);
+	yield takeEvery(actions.JOIN_FETCH_COMPLETE, JoinSaga);
+	yield takeEvery(actions.LOGIN_FETCH_COMPLETE, LoginSaga);
 }
 
 function* root() {

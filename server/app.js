@@ -20,6 +20,19 @@ app.get(['/', '/index.html'], (req, res, next) => {
     res.send('index');
 });
 
+app.get('/api/login', (req, res, next) => {
+    res.send('login');
+});
+
+app.post('/api/login', (req, res, next) => {
+    const sql = 'SELECT * FROM join_users WHERE id=? AND password=?';
+    connection.query(sql, [req.body.id, req.body.password], (err, rows) => {
+        if(err) console.log('Error', err);
+        console.log('server', req.body);
+        res.send({ status: 'SUCCESS' });
+    });
+});
+
 app.get('/api/join', (req, res, next) => {
     connection.query('SELECT * FROM join_users WHERE NAME="min"', (err, rows) => {
         if(err) console.log('Error:', err);
