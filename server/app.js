@@ -12,24 +12,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,PATCH,DELETE');
+    res.header('Access-Control-Request-Method', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Secrete_Token');
     next();
-});
-
-app.get(['/', '/index.html'], (req, res, next) => {
-    res.send('index');
-});
-
-app.get('/api/login', (req, res, next) => {
-    res.send('login');
 });
 
 app.post('/api/login', (req, res, next) => {
     const sql = 'SELECT * FROM join_users WHERE id=? AND password=?';
     connection.query(sql, [req.body.id, req.body.password], (err, rows) => {
         if(err) console.log('Error', err);
-        console.log('server', req.body);
-        res.send({ status: 'SUCCESS' });
+        res.json({loginCheck: 'login ok'});
     });
 });
 

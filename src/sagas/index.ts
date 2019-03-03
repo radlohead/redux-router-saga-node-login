@@ -32,7 +32,6 @@ function* LoginSaga() {
 }
 
 function* sagaList() {
-	// yield takeLatest(actions.JOIN_FETCH_COMPLETE, JoinSaga);
 	yield takeEvery(actions.JOIN_FETCH_COMPLETE, JoinSaga);
 	yield takeEvery(actions.LOGIN_FETCH_COMPLETE, LoginSaga);
 }
