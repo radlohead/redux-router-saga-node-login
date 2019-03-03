@@ -23,8 +23,8 @@ app.post('/api/login', (req, res, next) => {
     connection.query(sql, [req.body.id, req.body.password], (err, rows) => {
         if(err) console.log('Error', err);
         if(rows.length) {
-            res.json({loginCheck: 'login ok'});
-        } else res.json({loginCheck: 'login failed'});
+            res.json({ status: true });
+        } else res.json({ status: false });
     });
 });
 

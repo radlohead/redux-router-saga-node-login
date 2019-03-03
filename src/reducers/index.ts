@@ -1,7 +1,7 @@
 import { reducer as reduxFormReducer } from 'redux-form';
 import { combineReducers } from 'redux';
 import { POST_JOIN_FETCH_REQUEST, JOIN_FETCH_COMPLETE, 
-    POST_LOGIN_FETCH_REQUEST, LOGIN_FETCH_COMPLETE } from '../actions';
+    POST_LOGIN_FETCH_REQUEST, LOGIN_FETCH_COMPLETE, LOGIN_STATUS } from '../actions';
 import { IReducerAction } from './Types';
 
 const state = (state = {}, action: IReducerAction) => {
@@ -23,6 +23,11 @@ const state = (state = {}, action: IReducerAction) => {
         case LOGIN_FETCH_COMPLETE:
             return {
                 ...state
+            }
+        case LOGIN_STATUS:
+            return {
+                ...state,
+                data: action.data
             }
         default:
             return state;
