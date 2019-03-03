@@ -61,16 +61,10 @@ class Login extends React.Component<ILoginProps> {
     }
 }
 
-const mapStateToProps = (state: Types.IDataStatusType) => {
-    return {
-        data: state.data
-    }
-}
-
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         onGetLoginStatus: bindActionCreators(actions.getLoginStatus, dispatch)
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);

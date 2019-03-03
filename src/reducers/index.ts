@@ -35,8 +35,8 @@ const state = (state = {}, action: IReducerAction) => {
 }
 
 const reducer = combineReducers({
-    state,
-    form: reduxFormReducer
+    form: reduxFormReducer,
+    state
 });
 
 export default reducer;
