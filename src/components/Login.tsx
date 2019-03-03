@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { LoginForm } from './index';
-import { ILoginSubmitType } from './Types';
+import * as Types from './Types';
 import axios from 'axios';
 import * as actions from '../actions';
 
@@ -12,25 +12,22 @@ interface ILoginProps {
 }
 
 class Login extends React.Component<ILoginProps> {
-    constructor(props: any) {
-        super(props);
-    }
+    static defaultProps = { onGetLoginStatus: (data: Types.IStatusType) => {} };
 
-    static defaultProps = { onGetLoginStatus: (data: {status: boolean}) => {} };
-
-    private handleSubmit(values: ILoginSubmitType): void {
-        const postLoginFetchApi = async (values?: any) => {
+    private handleSubmit(values: Types.ILoginSubmitType): void {
+        const postLoginFetchApi = async (values: Types.ILoginSubmitType) => {
             const response = await axios.post(`${actions.BASE_SERVER_URL}/api/login`, values);
-            const { onGetLoginStatus }: any = this.props;
+            const { onGetLoginStatus } = this.props;
+            
             onGetLoginStatus(response.data);
             this.getRender(response.data.status, values.id);
         }
         postLoginFetchApi(values);
     }
 
-    public getLoginSuccess(id: any): void {
+    public getLoginSuccess(id: string|undefined): void {
         const refName = 'login';
-        const ref: any = ReactDOM.findDOMNode(this.refs[refName]);
+        const ref = ReactDOM.findDOMNode(this.refs[refName]) as HTMLDivElement;
         ReactDOM.unmountComponentAtNode(ref);
         ReactDOM.render(
             <div>login success {id}</div>,
@@ -38,9 +35,9 @@ class Login extends React.Component<ILoginProps> {
         );
     }
 
-    public getLoginFailed(): JSX.Element|any {
+    public getLoginFailed(): void {
         const refName = 'login';
-        const ref: any = ReactDOM.findDOMNode(this.refs[refName]);
+        const ref = ReactDOM.findDOMNode(this.refs[refName]) as HTMLDivElement;
         ReactDOM.unmountComponentAtNode(ref);
         ReactDOM.render(
             <div>login failed</div>,
@@ -48,7 +45,7 @@ class Login extends React.Component<ILoginProps> {
         );
     }
 
-    public getRender(status?: any, id?: any): any {
+    public getRender(status?: boolean, id?: string|undefined): void {
         if(!status) this.getLoginFailed();
         else this.getLoginSuccess(id);
     }
@@ -56,7 +53,7 @@ class Login extends React.Component<ILoginProps> {
     render(): JSX.Element {
         return (
             <>
-                <div ref="login">
+                <div ref='login'>
                     <LoginForm onSubmit={this.handleSubmit.bind(this)} />
                 </div>
             </>
@@ -64,13 +61,13 @@ class Login extends React.Component<ILoginProps> {
     }
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: Types.IDataStatusType) => {
     return {
         data: state.data
     }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<any>) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         onGetLoginStatus: bindActionCreators(actions.getLoginStatus, dispatch)
     }

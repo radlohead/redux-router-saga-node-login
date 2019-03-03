@@ -19,3 +19,11 @@ export interface ILoginSubmitType {
 export interface ILoginFormType {
     handleSubmit(e: FormSubmitHandler<{}, {}, string>|FormEvent<HTMLFormElement>): void;
 }
+
+export interface IDataStatusType {
+    data: IStatusType
+}
+
+export interface IStatusType {
+    status: boolean;
+}
