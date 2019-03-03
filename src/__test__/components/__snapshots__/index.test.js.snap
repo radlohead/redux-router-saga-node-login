@@ -31,33 +31,6 @@ Object {
 
 exports[`components index Login 1`] = `[Function]`;
 
-exports[`components index LoginForm 1`] = `
-Object {
-  "$$typeof": Symbol(react.forward_ref),
-  "defaultProps": Object {
-    "destroyOnUnmount": true,
-    "enableReinitialize": false,
-    "forceUnregisterOnUnmount": false,
-    "form": "loginForm",
-    "getFormState": [Function],
-    "keepDirtyOnReinitialize": false,
-    "persistentSubmitErrors": false,
-    "pure": true,
-    "shouldAsyncValidate": [Function],
-    "shouldError": [Function],
-    "shouldValidate": [Function],
-    "shouldWarn": [Function],
-    "touchOnBlur": true,
-    "touchOnChange": false,
-    "updateUnregisteredFields": false,
-  },
-  "displayName": "ReduxForm",
-  "render": [Function],
-}
-`;
+exports[`components index LoginForm 1`] = `[Function]`;
 
 exports[`components index Menu 1`] = `[Function]`;
-
-exports[`components index test export all called 1`] = `[Function]`;
-
-exports[`export all called 1`] = `[Function]`;
