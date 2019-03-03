@@ -3,3 +3,8 @@ export interface IGetJoinFetchApi {
     id?: string;
     password?: string;
 }
+
+export interface IGetLoginFetchApi {
+    id?: string;
+    password?: string;
+}

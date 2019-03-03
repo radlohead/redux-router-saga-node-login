@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Route } from 'react-router-dom';
-import "./App.scss";
 import { Menu, Home, Join } from '../components';
+import "./App.scss";
 
 class App extends React.Component {
 	render() {

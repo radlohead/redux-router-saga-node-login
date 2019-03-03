@@ -2,9 +2,9 @@ import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import axios from 'axios';
 import { LoginForm } from './index';
 import * as Types from './Types';
-import axios from 'axios';
 import * as actions from '../actions';
 
 interface ILoginProps {

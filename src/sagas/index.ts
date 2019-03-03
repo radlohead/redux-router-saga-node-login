@@ -1,14 +1,14 @@
 import { put, takeEvery, call, all, fork } from 'redux-saga/effects';
 import axios from 'axios';
 import * as actions from '../actions';
-import { IGetJoinFetchApi } from './Types';
+import * as Types from './Types';
 
-export const getJoinFetchApi = async (posts: IGetJoinFetchApi) => {
+export const getJoinFetchApi = async (posts: Types.IGetJoinFetchApi) => {
 	const response = await axios.post(`${actions.BASE_SERVER_URL}/api/join`, posts);
 	return response.data;
 }
 
-export const getLoginFetchApi = async (posts: any) => {
+export const getLoginFetchApi = async (posts: Types.IGetLoginFetchApi) => {
 	const response = await axios.post(`${actions.BASE_SERVER_URL}/api/login`, posts);
 	return response.data;
 }
