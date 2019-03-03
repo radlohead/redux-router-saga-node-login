@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { LoginForm } from './index';
@@ -11,21 +12,53 @@ interface ILoginProps {
 }
 
 class Login extends React.Component<ILoginProps> {
+    constructor(props: any) {
+        super(props);
+    }
+
     static defaultProps = { onGetLoginStatus: (data: {status: boolean}) => {} };
 
     private handleSubmit(values: ILoginSubmitType): void {
         const postLoginFetchApi = async (values?: any) => {
             const response = await axios.post(`${actions.BASE_SERVER_URL}/api/login`, values);
-            const { onGetLoginStatus } = this.props;
+            const { onGetLoginStatus }: any = this.props;
             onGetLoginStatus(response.data);
+            this.getRender(response.data.status, values.id);
         }
         postLoginFetchApi(values);
+    }
+
+    public getLoginSuccess(id: any): void {
+        const refName = 'login';
+        const ref: any = ReactDOM.findDOMNode(this.refs[refName]);
+        ReactDOM.unmountComponentAtNode(ref);
+        ReactDOM.render(
+            <div>login success {id}</div>,
+            ref
+        );
+    }
+
+    public getLoginFailed(): JSX.Element|any {
+        const refName = 'login';
+        const ref: any = ReactDOM.findDOMNode(this.refs[refName]);
+        ReactDOM.unmountComponentAtNode(ref);
+        ReactDOM.render(
+            <div>login failed</div>,
+            ref
+        );
+    }
+
+    public getRender(status?: any, id?: any): any {
+        if(!status) this.getLoginFailed();
+        else this.getLoginSuccess(id);
     }
 
     render(): JSX.Element {
         return (
             <>
-                <LoginForm onSubmit={this.handleSubmit.bind(this)} />
+                <div ref="login">
+                    <LoginForm onSubmit={this.handleSubmit.bind(this)} />
+                </div>
             </>
         )
     }

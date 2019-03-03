@@ -1,4 +1,5 @@
 import * as Types from './Types';
+import axios from 'axios';
 
 export const BASE_SERVER_URL = 'http://localhost:4000';
 

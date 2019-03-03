@@ -4,6 +4,11 @@ import { Field, reduxForm } from 'redux-form';
 import { ILoginFormType } from './Types';
 
 class LoginForm extends React.Component<ILoginFormType> {
+    componentDidUpdate() {
+        const { data }: any = this.props;
+        console.log('componentDidUpdate', data);
+    }
+
     public render(): JSX.Element {
         const { handleSubmit }: ILoginFormType = this.props;
         return (
@@ -44,4 +49,10 @@ const loginForm = reduxForm({
     form: 'loginForm'
 })(LoginForm as any);
 
-export default connect(null)(loginForm);
+const mapStateToProps = (state: any) => {
+    return {
+        data: state.data
+    }
+}
+
+export default connect(mapStateToProps, null)(loginForm);
