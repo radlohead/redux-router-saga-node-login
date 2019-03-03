@@ -1,4 +1,4 @@
-import { put, takeLatest, takeEvery, call, all, fork } from 'redux-saga/effects';
+import { put, takeEvery, call, all, fork } from 'redux-saga/effects';
 import axios from 'axios';
 import * as actions from '../actions';
 import { IGetJoinFetchApi } from './Types';

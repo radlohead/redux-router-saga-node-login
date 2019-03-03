@@ -4,11 +4,6 @@ import { Field, reduxForm } from 'redux-form';
 import { ILoginFormType } from './Types';
 
 class LoginForm extends React.Component<ILoginFormType> {
-    componentDidUpdate() {
-        const { data }: any = this.props;
-        console.log('componentDidUpdate', data);
-    }
-
     public render(): JSX.Element {
         const { handleSubmit }: ILoginFormType = this.props;
         return (
