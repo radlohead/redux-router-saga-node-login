@@ -29,11 +29,10 @@ app.post('/api/login', (req, res, next) => {
 });
 
 app.get('/api/join', (req, res, next) => {
-    connection.query('SELECT * FROM join_users WHERE NAME="min"', (err, rows) => {
+    connection.query('SELECT * FROM join_users', (err, rows) => {
         if(err) console.log('Error:', err);
-        console.log(jwt.verify(rows[0].password, 'minho'));
         res.send(rows);
-    })
+    });
 });
 
 app.post('/api/join', (req, res, next) => {
